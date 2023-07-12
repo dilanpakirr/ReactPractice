@@ -3,6 +3,7 @@ import Counter from "./components/Counter";
 import Hello from "./components/Hello";
 import InputState from "./components/InputState";
 import User from "./components/User";
+import Employe from "./components/Employe";
 
 import { useEffect, useState } from "react";
 
@@ -14,6 +15,8 @@ function App() {
   });
   return (
     <div>
+      <hr />
+      <Employe />
       <h6>
         --------------------------------------------------------------------------------------------------
       </h6>
