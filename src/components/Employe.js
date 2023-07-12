@@ -1,13 +1,20 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Employe() {
   const [users, setUser] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  //   useEffect(() => {
+  //     fetch("https://jsonplaceholder.typicode.com/users")
+  //       .then((r) => r.json())
+  //       .then((users) => setUser(users))
+  //       .catch((e) => console.log(e))
+  //       .finally(() => setLoading(false));
+  //   }, []);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((r) => r.json())
-      .then((users) => setUser(users))
+    axios("https://jsonplaceholder.typicode.com/users")
+      .then((users) => setUser(users.data))
       .catch((e) => console.log(e))
       .finally(() => setLoading(false));
   }, []);
