@@ -5,56 +5,75 @@ import InputState from "./components/InputState";
 import User from "./components/User";
 import Employe from "./components/Employe";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Student from "./components/Student";
+import StateExample from "./components/StateExample";
+import StudentDetail from "./components/StudentDetail";
+import Topics from "./components/Topics";
+import Error from "./components/Error";
 
 function App() {
-  const [lang, setLang] = useState("türkçe");
-  const [lists, setList] = useState(["list1", "list2"]);
   useEffect(() => {
     console.log("state güncellendi");
   });
   return (
     <div>
-      <hr />
-      <Employe />
-      <h6>
-        --------------------------------------------------------------------------------------------------
-      </h6>
-      <h5>Component</h5>
-      <h6>Örnek:</h6>
-      <Hello />
-      <h6>
-        --------------------------------------------------------------------------------------------------
-      </h6>
-      <h6>
-        --------------------------------------------------------------------------------------------------
-      </h6>
-      <h5>Props componentler arası veri aktarımı yapar</h5>
-      <h6>Örnek:</h6>
-      <User name="deneme" isLogged={true} friends={["ali", "ayşe", "mehmet"]} />
-      <h6>
-        --------------------------------------------------------------------------------------------------
-      </h6>
-      <h6>
-        --------------------------------------------------------------------------------------------------
-      </h6>
-      <h5>State: componentin herhangibir anında değerini değiştirebilmemiz.</h5>
-      <h6>Örnek:</h6>
-      {lang}
-      <br />
-      <button onClick={() => setLang("ingilizce")}>eng</button>
-      <h5>List</h5>
-      {lists.map((list, index) => (
-        <div key={index}>{list}</div>
-      ))}
-      <button onClick={() => setList([...lists, "list3"])}>Ekle</button>
-      <br></br>
-      <h6>
-        --------------------------------------------------------------------------------------------------
-      </h6>
-      <Counter />
-      <hr />
-      <InputState />
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Hello </Link>
+              </li>
+              <li>
+                <Link to="/employe">Employe</Link>
+              </li>
+              <li>
+                <Link to="/counter">Counter</Link>
+              </li>
+              <li>
+                <Link to="/student">Student</Link>
+              </li>
+              <li>
+                <Link to="/user">Props Örnek</Link>
+              </li>
+              <li>
+                <Link to="/stateExample">State Örnek</Link>
+              </li>
+              <li>
+                <Link to="/inputState">input State</Link>
+              </li>
+              <li>
+                <Link to="/topics">Topic</Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/" exact component={Hello} />
+            <Route path="/employe" component={Employe} />
+            <Route path="/counter" component={Counter} />
+            <Route path="/user">
+              <User
+                name="deneme"
+                isLogged={true}
+                friends={["ali", "ayşe", "mehmet"]}
+              />
+            </Route>
+            <Route path="/inputState" component={InputState} />
+            <Route path="/stateExample" component={StateExample} />
+            <Route path="/student" component={Student} />
+            <Route path="/studentDetail/:id" component={StudentDetail} />
+            <Route path="/topics">
+              <Topics />
+            </Route>
+            <Route path="*" component={Error} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
