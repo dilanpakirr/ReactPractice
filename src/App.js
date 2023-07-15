@@ -13,6 +13,9 @@ import StudentDetail from "./components/StudentDetail";
 import Topics from "./components/Topics";
 import Error from "./components/Error";
 import FormExample from "./components/FormExample";
+import { ThemeProvider } from "./context/ThemeContext";
+import Container from "./components/Container";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   useEffect(() => {
@@ -80,6 +83,12 @@ function App() {
           </Switch>
         </div>
       </Router>
+
+      <ThemeProvider>
+        <UserProvider>
+          <Container />
+        </UserProvider>
+      </ThemeProvider>
     </div>
   );
 }

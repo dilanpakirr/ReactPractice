@@ -1,5 +1,12 @@
-.App {
+.dark {
   text-align: center;
+  background-color: black;
+  color:#ffe5dd
+}
+.light{
+  text-align: center;
+  background-color: #ffe5dd;
+  color:black
 }
 
 nav{
