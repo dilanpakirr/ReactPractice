@@ -12,6 +12,7 @@ import StateExample from "./components/StateExample";
 import StudentDetail from "./components/StudentDetail";
 import Topics from "./components/Topics";
 import Error from "./components/Error";
+import FormExample from "./components/FormExample";
 
 function App() {
   useEffect(() => {
@@ -47,6 +48,9 @@ function App() {
               <li>
                 <Link to="/topics">Topic</Link>
               </li>
+              <li>
+                <Link to="/form-example">Form Example</Link>
+              </li>
             </ul>
           </nav>
 
@@ -70,6 +74,8 @@ function App() {
             <Route path="/topics">
               <Topics />
             </Route>
+            <Route path="/form-example" component={FormExample} />
+
             <Route path="*" component={Error} />
           </Switch>
         </div>
